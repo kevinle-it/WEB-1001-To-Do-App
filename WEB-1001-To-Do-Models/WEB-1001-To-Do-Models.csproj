@@ -1,0 +1,8 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+    <RootNamespace>WEB_1001_To_Do_Models</RootNamespace>
+  </PropertyGroup>
+
+</Project>
