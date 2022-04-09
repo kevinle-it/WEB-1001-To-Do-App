@@ -25,8 +25,14 @@ namespace WEB_1001_To_Do_App
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            /*
+             * Add DB Context to use ToDoDBContext inside Index Page Model
+             */
             services.AddDbContext<ToDoDBContext>(builder =>
             {
+                /*
+                 * Use SQL Server database for To Do data storage
+                 */
                 builder.UseSqlServer("Name=ConnectionStrings:ToDoDb-localdb", b => b.MigrationsAssembly("WEB-1001-To-Do-LocalDb-Migrations"));
             });
             services.AddRazorPages();

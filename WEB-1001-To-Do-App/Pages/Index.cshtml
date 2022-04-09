@@ -4,7 +4,12 @@
 @{
     ViewData["Title"] = "Home page";
 }
-
+@*
+    This is the Main Page with a form to add new To Do item,
+    and a To Do list showing incompleted To Do item,
+    with checkboxes to mark one item as completed
+    to hide it from the list
+*@
 <form class="form-inline" method="post">
     <label asp-for="todo.Description" class="h6"></label>
     <input asp-for="todo.Description" class="ml-2" />

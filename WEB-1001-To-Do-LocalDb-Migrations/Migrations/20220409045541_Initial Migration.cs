@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace WEB_1001_To_Do_LocalDb_Migrations.Migrations
 {
+    // The definition of ToDoDb used for version migrations
     public partial class InitialMigration : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
