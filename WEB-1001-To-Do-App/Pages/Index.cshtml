@@ -5,18 +5,22 @@
     ViewData["Title"] = "Home page";
 }
 
-<div>
-    <form method="post">
-        <label asp-for="todo.Description"></label>
-        <input asp-for="todo.Description" />
-        <input type="submit" value="Add To-Do" />
-    </form>
-    <h2>TO-DO LIST</h2>
-    <ul>
+<form class="form-inline" method="post">
+    <label asp-for="todo.Description" class="h6"></label>
+    <input asp-for="todo.Description" class="ml-2" />
+    <input type="submit" value="Add To-Do" class="btn btn-primary ml-3" />
+</form>
+<h2 class="mt-3">TO-DO LIST</h2>
+<div class="card">
+    <ul class="list-group list-group-flush">
         @foreach(ToDo item in Model.ToDoList)
         {
-            <li>
-                @item.Description
+            <li class="list-group-item">
+                <div class="d-flex justify-content-between">
+                    <div class="d-flex">
+                        <h5>@item.Description</h5>
+                    </div>
+                </div>
             </li>
         }
     </ul>
