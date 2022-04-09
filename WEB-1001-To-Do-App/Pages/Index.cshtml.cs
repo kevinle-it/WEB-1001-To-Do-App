@@ -18,6 +18,8 @@ namespace WEB_1001_To_Do_App.Pages
         [FromForm]
         public ToDo todo { get; set; }
 
+        public ICollection<ToDo> ToDoList { get; set; }
+
         public IndexModel(ILogger<IndexModel> logger, ToDoDBContext db)
         {
             _logger = logger;
@@ -26,7 +28,7 @@ namespace WEB_1001_To_Do_App.Pages
 
         public void OnGet()
         {
-
+            ToDoList = _db.ToDos.Select(item => item).ToList();
         }
 
         public void OnPost()
