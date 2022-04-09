@@ -32,20 +32,20 @@ namespace WEB_1001_To_Do_App.Pages
             ToDoList = _db.ToDos.Where(item => item.IsCompleted == false).ToList();
         }
 
-        public IActionResult OnPost()
+        public async Task<IActionResult> OnPost()
         {
             _db.Add<ToDo>(todo);
-            _db.SaveChangesAsync();
+            await _db.SaveChangesAsync();
             return RedirectToPage("Index");
         }
 
-        public IActionResult OnPostComplete([FromQuery] int Id)
+        public async Task<IActionResult> OnPostComplete([FromQuery] int Id)
         {
             ToDo item = _db.ToDos.FirstOrDefault(item => item.Id == Id);
             item.IsCompleted = true;
             item.CompletionDate = DateTime.Now;
             _db.Entry(item).State = EntityState.Modified;
-            _db.SaveChangesAsync();
+            await _db.SaveChangesAsync();
             return RedirectToPage("Index");
         }
     }
