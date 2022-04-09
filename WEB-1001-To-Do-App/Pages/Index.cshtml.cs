@@ -31,10 +31,11 @@ namespace WEB_1001_To_Do_App.Pages
             ToDoList = _db.ToDos.Select(item => item).ToList();
         }
 
-        public void OnPost()
+        public IActionResult OnPost()
         {
             _db.Add<ToDo>(todo);
             _db.SaveChangesAsync();
+            return RedirectToPage("Index");
         }
     }
 }
