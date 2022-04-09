@@ -17,8 +17,11 @@
         {
             <li class="list-group-item">
                 <div class="d-flex justify-content-between">
-                    <div class="d-flex">
-                        <h5>@item.Description</h5>
+                    <div class="d-flex align-items-center">
+                        <form method="post" asp-page-handler="complete" asp-route-Id="@item.Id">
+                            <input type="checkbox" onchange="this.form.submit()">
+                        </form>
+                        <h5 class="ml-3">@item.Description</h5>
                     </div>
                 </div>
             </li>

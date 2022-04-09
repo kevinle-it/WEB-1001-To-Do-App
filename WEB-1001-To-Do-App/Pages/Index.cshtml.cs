@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
@@ -28,12 +29,22 @@ namespace WEB_1001_To_Do_App.Pages
 
         public void OnGet()
         {
-            ToDoList = _db.ToDos.Select(item => item).ToList();
+            ToDoList = _db.ToDos.Where(item => item.IsCompleted == false).ToList();
         }
 
         public IActionResult OnPost()
         {
             _db.Add<ToDo>(todo);
+            _db.SaveChangesAsync();
+            return RedirectToPage("Index");
+        }
+
+        public IActionResult OnPostComplete([FromQuery] int Id)
+        {
+            ToDo item = _db.ToDos.FirstOrDefault(item => item.Id == Id);
+            item.IsCompleted = true;
+            item.CompletionDate = DateTime.Now;
+            _db.Entry(item).State = EntityState.Modified;
             _db.SaveChangesAsync();
             return RedirectToPage("Index");
         }
